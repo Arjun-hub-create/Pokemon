@@ -3,6 +3,7 @@ import JungleBackground from './components/JungleBackground'
 import TreeScene from './components/TreeScene'
 import HeroSection from './components/HeroSection'
 import BgFloaters from './components/BgFloaters'
+import FloatingParticles from './components/FloatingParticles'
 import ScrollProgressBar from './components/ScrollProgressBar'
 import StatsBar from './components/StatsBar'
 import PokemonCard from './components/PokemonCard'
@@ -85,6 +86,7 @@ function App() {
       <JungleBackground />
       <TreeScene />
       <BgFloaters />
+      <FloatingParticles />
       <ScrollProgressBar />
       <HeroSection onExplore={() => {}} />
 

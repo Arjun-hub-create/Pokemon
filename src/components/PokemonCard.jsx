@@ -23,7 +23,7 @@ function PokemonCard({ pokemon, isFav, onToggleFav, onClick, cardIndex }) {
 
   return (
     <div
-      className="pokemon-card"
+      className={`pokemon-card ${isFav ? 'favorited' : ''}`}
       onClick={() => onClick(pokemon)}
       style={{
         '--type-color': `${typeColor}33`,

@@ -2443,3 +2443,201 @@ body {
   .hero-jumper { display: none; }
 }
 
+/* ===== 🎨 EXTREME ANIMATIONS - GPU OPTIMIZED ===== */
+
+/* 1. SHIMMER WAVE EFFECT - Sleek shimmer across cards */
+.pokemon-card::after {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.pokemon-card:hover::after {
+  animation: shimmerWave 0.6s ease-in-out forwards;
+}
+
+@keyframes shimmerWave {
+  0% { 
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% { 
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* 2. PARTICLE BURST - Particles explode on favorite click */
+.fav-btn.active::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,215,0,0.8) 0%, transparent 70%);
+  animation: particleBurst 0.6s cubic-bezier(0.36, 0, 0.66, -0.56) 1 forwards;
+  pointer-events: none;
+}
+
+@keyframes particleBurst {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+/* 3. FLOATING PARTICLES BACKGROUND - Random floating orbs */
+.floating-particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,215,0,0.3), rgba(76,175,80,0.1));
+  box-shadow: 0 0 20px rgba(255,215,0,0.2);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.floating-particle-1 {
+  width: 40px;
+  height: 40px;
+  animation: floatOrb1 12s ease-in-out infinite;
+}
+
+.floating-particle-2 {
+  width: 60px;
+  height: 60px;
+  animation: floatOrb2 15s ease-in-out infinite 2s;
+  opacity: 0.5;
+}
+
+.floating-particle-3 {
+  width: 30px;
+  height: 30px;
+  animation: floatOrb3 18s ease-in-out infinite 4s;
+  opacity: 0.4;
+}
+
+@keyframes floatOrb1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(60px, -80px) scale(1.1); }
+  50% { transform: translate(-40px, -120px) scale(0.9); }
+  75% { transform: translate(80px, -40px) scale(1.05); }
+}
+
+@keyframes floatOrb2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-70px, -100px) scale(1.15); }
+  66% { transform: translate(50px, -80px) scale(0.95); }
+}
+
+@keyframes floatOrb3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  20% { transform: translate(40px, -70px) scale(1.1); }
+  40% { transform: translate(-50px, -100px) scale(1.05); }
+  60% { transform: translate(70px, -60px) scale(0.9); }
+  80% { transform: translate(-30px, -110px) scale(1.1); }
+}
+
+/* 4. BOUNCY ENTRANCE UPGRADE - Enhanced bounce for cards */
+@keyframes cardAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.85);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-8px) scale(1.05);
+  }
+  80% {
+    transform: translateY(-2px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 5. HOVER LIFT EFFECT - Enhanced elevation on hover */
+.pokemon-card {
+  position: relative;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.pokemon-card:hover {
+  transform: translateY(-12px) scale(1.04);
+  box-shadow: 
+    0 20px 50px rgba(0,0,0,0.5),
+    0 0 40px rgba(76,175,80,0.3),
+    var(--shadow-green);
+}
+
+/* 6. PULSING FAVORITE GLOW - Halo effect for favorited Pokemon */
+.pokemon-card.favorited::before {
+  position: absolute;
+  content: '';
+  inset: -8px;
+  border-radius: 16px;
+  background: radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 70%);
+  animation: favGlowPulse 2s ease-in-out infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.fav-btn.active {
+  animation: heartPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
+             starGlow 2s ease-in-out infinite 0.4s;
+}
+
+@keyframes starGlow {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(255,215,0,0.4), 
+                 0 0 10px rgba(255,215,0,0.2);
+    filter: drop-shadow(0 0 3px rgba(255,215,0,0.3));
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(255,215,0,0.8), 
+                 0 0 25px rgba(255,215,0,0.4);
+    filter: drop-shadow(0 0 8px rgba(255,215,0,0.6));
+  }
+}
+
+@keyframes favGlowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255,215,0,0.1);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(255,215,0,0.25);
+    transform: scale(1.02);
+  }
+}
+
+/* BONUS: Card combo effect when multiple favorites */
+.pokemon-card.favorited {
+  border-color: rgba(255,215,0,0.4);
+}
+
+/* Ensure animations don't cause lag */
+@media (prefers-reduced-motion: reduce) {
+  .pokemon-card,
+  .pokemon-card::before,
+  .pokemon-card::after,
+  .fav-btn,
+  .fav-btn.active,
+  .floating-particle,
+  .floating-particle-1,
+  .floating-particle-2,
+  .floating-particle-3 {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
